@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -1 |tr 'n' ','
+ls -1 |tr 'n' ',' -a sort -an
