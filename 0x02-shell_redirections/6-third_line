@@ -1,2 +1,2 @@
 #!/bin/bash
-cat --number 6-third_line |grep '3'
+cat --number iacta |grep '3'
