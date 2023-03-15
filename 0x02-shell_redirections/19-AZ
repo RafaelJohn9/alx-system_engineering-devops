@@ -1,2 +1,2 @@
 #!/bin/bash
-read name |echo $1 |tr 'Ac' 'Ze'
+echo "$1" |tr 'Ac' 'Ze'
