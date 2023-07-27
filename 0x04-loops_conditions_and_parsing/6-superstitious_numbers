@@ -10,10 +10,10 @@ do
 			echo "bad luck from China"
 			;;
 		9)
-			echo  "bad luck from Japan"
+			echo "bad luck from Japan"
 			;;
 		17)
-			echo  "bad luck from italy"
+			echo "bad luck from italy"
 			;;
 	esac
 	i=$((i+1))
