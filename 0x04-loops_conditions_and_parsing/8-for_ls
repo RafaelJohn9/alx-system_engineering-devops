@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # displays a list of files after the dash
 
-for line in $(ls -1)
+for line in *
 do
-	echo $line | cut -d'-' -f2
+	echo "$line" | cut -d'-' -f2
 done
