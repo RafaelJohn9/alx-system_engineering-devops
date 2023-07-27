@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# hours and minutes for the 12 hours + 1
+
+hour=1
+min=1
+
+while [[ $hour -le 12 ]]
+do
+	if [[ min -eq 1 ]];
+	then
+		echo "Hour: $hour"
+	fi
+
+	if [[ min -eq  59 ]];
+	then
+		echo "$min"
+		min=1
+		hour=$((hour + 1))
+	else
+		echo "$min"
+		min=$((min + 1))
+	fi
+done
