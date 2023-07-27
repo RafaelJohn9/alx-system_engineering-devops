@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # hours and minutes for the 12 hours + 1
 
-hour=1
+hour=0
 min=1
 
 while [[ $hour -le 12 ]]
