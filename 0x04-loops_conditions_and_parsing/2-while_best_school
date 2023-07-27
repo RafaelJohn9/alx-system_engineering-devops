@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # using a while loop to print Best School
 
 i="1"
