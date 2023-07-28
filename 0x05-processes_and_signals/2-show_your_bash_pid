@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#only viewing bash processes
+
+ps -auxf | grep "bash"
