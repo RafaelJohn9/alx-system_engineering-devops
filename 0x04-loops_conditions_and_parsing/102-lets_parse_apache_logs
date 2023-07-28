@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#removing ip addresses and error codes from apache
+
+awk '{print $1, $9}' apache-access.log
