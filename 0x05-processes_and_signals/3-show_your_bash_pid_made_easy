@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# lists processes id
+
+pgrep -l bash | grep -v "$$"
