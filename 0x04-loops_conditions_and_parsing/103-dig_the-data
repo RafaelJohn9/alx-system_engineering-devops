@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# sorts the ip addresses
+
+awk '{ip_code[$1 " " $9]++} END {for (pair in ip_code) print ip_code[pair], pair}' apache-access.log | sort -nrk1,1
