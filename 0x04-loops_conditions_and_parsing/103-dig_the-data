@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# sorts the ip addresses
+# sorts the ip addresses in order of frequency
 
-awk '{ip_code[$1 " " $9]++} {count++} END {for (pair in ip_code) printf "%5d %s\n", ip_code[pair], pair}' apache-access.log | sort -nr
+awk '{print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn
