@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# used to get the program id and listening ports
+netstat -tulnep
