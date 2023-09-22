@@ -1,3 +1,4 @@
+# writes a new file school in the dir /temp
 file{ '/tmp/school':
   ensure  => 'file',
   mode    => '0744',
