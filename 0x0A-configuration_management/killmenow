@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# terminal starting my process
+
+while [[ true ]]
+do
+	sleep 2
+done
