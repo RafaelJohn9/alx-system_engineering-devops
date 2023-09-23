@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # uses ssh to connect to server
 
-private_key="~/.ssh/school"
-
-# SSH connection using ssh single char flags
-ssh -i "$private_key" ubuntu@34.224.1.120
+ssh -i ~/.ssh/school ubuntu@34.224.1.120
