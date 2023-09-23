@@ -1,6 +1,6 @@
 # Define a custom Puppet resource named 'kill_process'
 
-exec { 'killmenow':
+exec { 'pkill':
   command     => 'pkill -f killmenow',
   provider    => 'shell',
 }
