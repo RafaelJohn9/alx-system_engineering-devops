@@ -1,16 +1,7 @@
 #!/usr/bin/env bash
-# a script that install nginx and sets it up
+# installing nginx server
 
-# Update package lists and install nginx
-apt-get update
-apt-get -y install nginx
-
-# Create a default configuration with Hello World content
-echo "Hello World!" > /usr/share/nginx/html/index.html
-
-# Ensure nginx is listening on port 80
-sed -i 's/80 default_server;/80 default_server;\n    listen [::]:80 default_server;/' /etc/nginx/sites-available/default
-
-# Restart nginx
-service nginx restart
-
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+sudo service nginx restart
