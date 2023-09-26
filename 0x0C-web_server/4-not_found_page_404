@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# configures your Nginx server so that /redirect_me
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# creates a simple html page
+echo "Hello Word" | sudo tee /var/www/html/index.html > /dev/null
+
+# configures nginx to perform the redirection
+sed -i "46i rewrite ^/redirect_me https://www.youtube.com permanent;" /etc/nginx/sites-available/default
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html > /dev/null
+
+sed -i "46i error_page 404 /custom_404.html;" /etc/nginx/sites-available/default
+
+# restart nginx to apply the configuration changes done
+sudo service nginx restart
