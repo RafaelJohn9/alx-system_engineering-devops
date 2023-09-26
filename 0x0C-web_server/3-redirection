@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# configures your Nginx server so that /redirect_me
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+
+# creates a simple html page
+echo "Hello Word" | sudo tee /var/www/html/index.html
+
+# configures nginx to perform the redirection
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.facebook.com/ permanenet;' /etc/nginx/sites-available/default
+
+# restart nginx to apply the configuration changes done
+sudo service nginx restart
