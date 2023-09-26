@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# apache concept page
+
+sudo service apache2 start
