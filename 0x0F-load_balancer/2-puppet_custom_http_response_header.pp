@@ -1,11 +1,11 @@
 # nginx configuration file
 
-exec { 'update':
+exec { 'apt_update':
   command     => 'sudo apt-get -y update',
   provider => shell,
 }
 
--> exec { 'install':
+-> exec { 'nginx_install':
   command => 'sudo apt-get -y install nginx',
   provider => shell,
 }
