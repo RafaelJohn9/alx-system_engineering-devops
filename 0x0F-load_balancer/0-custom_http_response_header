@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
-# configuring both servers to give the type of server its served with
+# installing nginx server
 
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+sudo service nginx restart
+
+# creates a simple html page
+echo "Hello Word" | sudo tee /var/www/html/index.html
+
+# configures nginx to perform the redirection
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.facebook.com/ permanent;' /etc/nginx/sites-available/default
+
+# this is not a page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html > /dev/null
+
+sed -i "46i error_page 404 /custom_404.html;" /etc/nginx/sites-available/default
+
+# configuring both servers to give the type of server its served with
 sudo sed -i '/http {/a  \    add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
 
 sudo nginx -s reload
