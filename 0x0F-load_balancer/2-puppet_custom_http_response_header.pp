@@ -1,3 +1,4 @@
+# configuration of nginx
 exec { 'apt-update':
   command     => 'apt-get -y update',
   path        => 'usr/bin:/bin',
