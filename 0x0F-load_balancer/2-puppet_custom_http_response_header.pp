@@ -1,6 +1,6 @@
 # configuration of nginx
 
-$hostname = $::hostname
+$hostname ||= $::hostname
 
 exec { 'apt_update':
   command     => 'apt-get -y update',
@@ -25,7 +25,7 @@ file { '/etc/nginx/sites-available/default':
   line   => "\n\tadd_header X-Served-By \"${hostname}\";",
 }
 
-exec { 'restart service'
+exec { 'restart service':
   command  => 'sudo service nginx restart',
   provider => shell,
 }
