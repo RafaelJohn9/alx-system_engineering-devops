@@ -1,14 +1,14 @@
 # configuration of nginx
 exec { 'apt-update':
   command     => 'apt-get -y update',
-  path        => 'usr/bin:/bin',
+  path        => '/usr/bin:/bin',
   refreshonly => true,
 }
 
 exec { 'apt-get':
   command => 'apt-get -y install nginx',
   path    => '/usr/bin:/bin',
-  require => Exec['apt-update]',
+  require => Exec['apt-update'],
 }
 
 -> file { '/var/www/html/index.nginx-debian.html':
@@ -18,15 +18,15 @@ exec { 'apt-get':
 file_line { 'add_redirect':
   path   => '/etc/nginx/sites-enabled/default',
   after  => 'server_name _;',
-  line   => "\tlocation /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}"
+  line   => "\tlocation /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}",
   notify => Exec['restart_nginx'],
 }
 
 file_line { 'add_header':
-  path   => '/etc/nginx/sites-enabled/default'
+  path   => '/etc/nginx/sites-enabled/default',
   after  => "^\tlocation / {",
   line   => "\t\tadd_header X-Served-By \"${::hostname}\";",
-  notify => Exec['restart_nginx']
+  notify => Exec['restart_nginx'],
 }
 
 exec { 'restart_nginx':
