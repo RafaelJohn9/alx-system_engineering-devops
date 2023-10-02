@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# configuring both servers to give the type of server its served with
+
+sudo sed -i '/http {/a  \    add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
+
+sudo nginx -s reload
