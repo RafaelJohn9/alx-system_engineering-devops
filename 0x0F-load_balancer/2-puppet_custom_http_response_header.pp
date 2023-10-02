@@ -1,26 +1,21 @@
-# automate the task of creating a custom HTTP header response
+# nginx configuration file
 
-$hostname = $::hostname
-
-exec {'apt-update':
-    command => '/usr/bin/apt-get update',
-}
-package {'nginx':
-    ensure => 'installed',
-}
-service { 'nginx':
-    ensure  => 'running',
-    enable  => true,
-    require => Package['nginx'],
-}
-file { '/etc/nginx/sites-available/default':
-    ensure => 'present',
-    path   => '/etc/nginx/sites-available/default',
-    match => 'listen 80 default_server',
-    line  => "\n\tadd_header X-Served-By \"${hostname}\";",
+exec { 'update':
+  command     => 'sudo apt-get -y update',
+  provider => shell,
 }
 
-exec { 'restart service':
-    command  => 'sudo service nginx restart',
-    provider => shell,
+-> exec { 'install':
+  command => 'sudo apt-get -y install nginx',
+  provider => shell,
+}
+
+-> exec { 'replace':
+  command => 'sudo sed -i "/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default',
+  provider => shell,
+}
+
+-> exec { 'restart':
+  command => 'sudo service nginx restart',
+  provider => shell,
 }
