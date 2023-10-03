@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# configuring nginx to listen to port 80
+sudo sed -i 's|http{|http{\n     listen localhost:80;|' ./nginx.conf
+sudo service nginx start
