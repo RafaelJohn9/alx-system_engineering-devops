@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
-# configuring nginx to listen to port 80
-sudo sed -i 's|http{|http{\n     listen localhost:80;|' ./nginx.conf
-sudo service nginx start
+# running netstat -nlp | grep nginx, i observed it was running on port 8080
+# then i checked if the configrations are alright, i checked /etc/nginx/sites-enabled/default
+# and the server was runnig on port 8080, so i created a symoblic link to /etc/nginx/sites-available/default
+# which has the correct config and restarted the service
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
