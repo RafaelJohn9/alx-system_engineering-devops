@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 # this script is used to print out the current user invoking CMDs
-name=$1
-sudo -u "$name" whoami
+
+sudo -u "$1" whoami
