@@ -15,9 +15,6 @@ if __name__ == "__main__":
     # declaration of variables
     usrId = int(sys.argv[1])
     url = "https://jsonplaceholder.typicode.com"
-    noOfTasks = 0
-    tasksDone = 0
-    titlesOfTasks = []
 
     # fully variables  definition
     userUrl = requests.get("https://jsonplaceholder.typicode.com/users/{}"
@@ -27,18 +24,13 @@ if __name__ == "__main__":
     todosData = todosUrl.json()
 
     username = userData["name"]
-    for task in todosData:
-        if task["userId"] == usrId:
-            titlesOfTasks.append(task["title"])
-            noOfTasks += 1
-            if task["completed"]:
-                titlesOfTasks.append(task["title"])
-                tasksDone += 1
-        else:
-            continue
 
     # output
     with open("./USER_ID.csv", "w") as f:
-        for title in titlesOfTasks:
-            f.write('"{}", "{}", "{}", "{}"\n'
-                    .format(usrId, username, task['completed'], title))
+        for task in todosData:
+            if task['userId'] == usrId:
+                f.write('"{}", "{}", "{}", "{}"\n'
+                        .format(usrId,
+                                username,
+                                task['completed'],
+                                task['title']))
