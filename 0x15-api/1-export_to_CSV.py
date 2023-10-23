@@ -23,13 +23,13 @@ if __name__ == "__main__":
     userData = userUrl.json()
     todosData = todosUrl.json()
 
-    username = userData["name"]
+    username = userData["username"]
 
     # output
     with open(f"./{usrId}.csv", "w") as f:
         for task in todosData:
             if task['userId'] == usrId:
-                f.write('"{}", "{}", "{}", "{}"\n'
+                f.write('"{}","{}","{}","{}"\n'
                         .format(usrId,
                                 username,
                                 task['completed'],
