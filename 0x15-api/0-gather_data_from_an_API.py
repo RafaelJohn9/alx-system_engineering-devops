@@ -4,13 +4,14 @@
 a python script that using this REST API, for a given employee ID,
 returns information about his/her TODO list progress
 """
+import requests
+import sys
+
+
 if __name__ == "__main__":
     """
     this the unimportable script that gets the data
     """
-    import requests
-    import sys
-
     # declaration of variables
     usrId = int(sys.argv[1])
     url = "https://jsonplaceholder.typicode.com"
@@ -36,6 +37,6 @@ if __name__ == "__main__":
             continue
 
     # output
-    print(f"Empoyee {username} is done with tasks({tasksDone}/{noOfTasks}):")
+    print(f"Employee {username} is done with tasks({tasksDone}/{noOfTasks}):")
     for title in titlesOfTasks:
         print("\t ", title)
