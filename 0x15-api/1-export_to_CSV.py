@@ -26,7 +26,7 @@ if __name__ == "__main__":
     username = userData["name"]
 
     # output
-    with open("./USER_ID.csv", "w") as f:
+    with open(f"./{usrId}.csv", "w") as f:
         for task in todosData:
             if task['userId'] == usrId:
                 f.write('"{}", "{}", "{}", "{}"\n'
