@@ -7,6 +7,7 @@ and returns a list containing the titles of trending titles
 
 import requests
 
+
 def recurse(subreddit, hot_list=[], after=None):
     """
     function that utilizes recursion for it
@@ -14,7 +15,7 @@ def recurse(subreddit, hot_list=[], after=None):
 
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {'User-Agent': 'My User Agent 1.0'}
-    params = {'after': after}
+    params = {'limit': 100, 'after': after}
 
     response = requests.get(url, headers=headers, params=params)
 
