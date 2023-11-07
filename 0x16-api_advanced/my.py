@@ -19,9 +19,9 @@ data = session.json()
 len = 0
 try:
     for value in data['data']['children']:
+        print(value)
         if len == 10:
             break
-        print(value['data']['title'])
         len += 1
 except Exception:
     print(data)
