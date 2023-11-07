@@ -14,10 +14,9 @@ def top_ten(subreddit):
     user = {
             "User-Agent": "used to get the top ten posts in subreddit"
             }
-    session = requests.get(url, headers=user)
-    data = session.json()
-
     try:
+        session = requests.get(url, headers=user)
+        data = session.json()
         length = 0
         for value in data['data']['children']:
             if length == 10:
