@@ -8,9 +8,20 @@ import json
 import requests
 
 subreddit = "programming"
-header = {
-        "User-Agent": "Needs the total number of subscibers in a subreddit"
+url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+
+user = {
+        "User-Agent": "used to get the top ten posts in subreddit"
         }
-url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-content = requests.get(url, headers=header)
-print(content.json())
+session = requests.get(url, headers=user)
+data = session.json()
+
+len = 0
+try:
+    for value in data['data']['children']:
+        if len == 10:
+            break
+        print(value['data']['title'])
+        len += 1
+except Exception:
+    print(data)
