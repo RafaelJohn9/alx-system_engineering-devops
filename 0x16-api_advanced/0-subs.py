@@ -1,19 +1,21 @@
 #!/usr/bin/python3
+""" module of the function number_of_subscribers """
 
-"""
-a script that fetches amount of subreditts in a particular search query
-"""
+import requests
+
 
 def number_of_subscribers(subreddit):
-    import requests
-
-    url = "https://www.reddit.com/subreddits/search.json?q={}".format(subreddit)
-    headers = {
-            'User-Agent': 'MyRedditApp/1.0'
+    """
+    counts the number or subscribers in a subreddit
+    """
+    header = {
+            "User-Agent": "Needs the total number of subscibers in a subreddit"
             }
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    content = requests.get(url, header)
+    data = content.json()
 
-    session = requests.get(url, headers)
-    if (session.status_code == 200):
-       return (len(session.json()['data']))
+    if content.status_code == 200:
+        return (data["data"]["subscribers"])
     else:
-        return (0);
+        return (0)
