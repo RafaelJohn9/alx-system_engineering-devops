@@ -2,8 +2,8 @@
 """
 a module that  sontaints the count_words fucntion
 """
-import requests
 import re
+import requests
 
 
 def count_words(subreddit, word_list, wordCount=None, after_token=None):
