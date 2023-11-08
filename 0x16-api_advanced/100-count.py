@@ -6,7 +6,7 @@ import re
 import requests
 
 
-def count_words(subreddit, words_to_count, wordCount={}, after_token=""):
+def count_words(subreddit, word_list, wordCount={}, after_token=""):
     """
     Count the occurrences of words in the titles of hot posts in a subreddit.
     """
@@ -41,7 +41,7 @@ def count_words(subreddit, words_to_count, wordCount={}, after_token=""):
         # Process each post in the response
         for post in response.json().get("data").get("children"):
             # Iterate through the list of words to count
-            for word in words_to_count:
+            for word in word_list:
                 # Use regex to find occurrences of the word in the post title
                 pattern = re.escape(word.lower())
                 target = post.get('data').get('title').lower()
@@ -54,4 +54,4 @@ def count_words(subreddit, words_to_count, wordCount={}, after_token=""):
                             )
 
         # Continue to the next page of posts
-        return count_words(subreddit, words_to_count, wordCount, after_token)
+        return count_words(subreddit, word_list, wordCount, after_token)
