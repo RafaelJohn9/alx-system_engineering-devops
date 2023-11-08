@@ -12,7 +12,7 @@ def top_ten(subreddit):
     """
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     user = {
-            "User-Agent": "used to get the top ten posts in subreddit"
+            "User-Agent": "My User agent"
             }
     try:
         session = requests.get(url, headers=user)
